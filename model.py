@@ -5,7 +5,8 @@ import seaborn as sns
 from sklearn.model_selection import cross_val_score
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import Imputer, normalize, MinMaxScaler
-from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.linear_model import LinearRegression, LogisticRegression, BayesianRidge
+from sklearn.svm import SVR
 
 
 def comma_to_dot_float(s):
@@ -75,7 +76,9 @@ df_test_clean = preprocess(df_test, train=False)
 
 # choose the model
 # clf = RandomForestRegressor(n_estimators=100)
-clf = LinearRegression()
+# clf = LinearRegression()
+clf = BayesianRidge()
+# clf = SVR()
 
 # columns to train
 features = df_train_clean.dtypes[df_train_clean.dtypes != 'object'].index.values
